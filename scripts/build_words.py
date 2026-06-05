@@ -40,6 +40,7 @@ def normalize(raw: dict) -> list[dict]:
                 "ipa_uk": item.get("phon_br") or "",
                 "definition": item.get("definition") or "",
                 "definition_vi": "",
+                "meaning_vi": "",
                 "example": item.get("example") or "",
             }
         )
@@ -51,12 +52,19 @@ def normalize(raw: dict) -> list[dict]:
 
 
 def apply_vi_cache(entries: list[dict]) -> list[dict]:
-    cache_path = Path(__file__).resolve().parent / "vi_cache.json"
-    if not cache_path.exists():
-        return entries
-    cache = json.loads(cache_path.read_text(encoding="utf-8"))
+    scripts = Path(__file__).resolve().parent
+    vi_cache = scripts / "vi_cache.json"
+    quick_cache = scripts / "quick_vi_cache.json"
+
+    def load(path: Path) -> dict:
+        return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+    vi = load(vi_cache)
+    quick = load(quick_cache)
     for entry in entries:
-        entry["definition_vi"] = cache.get(str(entry["id"]), "")
+        key = str(entry["id"])
+        entry["definition_vi"] = vi.get(key, "")
+        entry["meaning_vi"] = quick.get(key, "")
     return entries
 
 

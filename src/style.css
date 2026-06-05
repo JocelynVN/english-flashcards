@@ -288,32 +288,20 @@ body {
   color: var(--accent);
 }
 
-.card__pos {
+.card__meaning-vi {
   margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1.3;
+}
+
+.card__pos {
+  margin: 0;
   font-size: 0.78rem;
   font-style: italic;
   color: var(--ink-muted);
-}
-
-.card__def-vi {
-  margin: 0 0 0.35rem;
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--teal);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.card__def {
-  margin: 0;
-  font-size: 0.82rem;
-  color: var(--ink-muted);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 /* Study mode */
@@ -423,19 +411,56 @@ body {
   color: var(--teal);
 }
 
-.flashcard__definition-vi {
-  margin: 0 0 0.85rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.55;
+.flashcard__meaning-vi {
+  margin: 0.5rem 0 1rem;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
   color: var(--teal);
   max-width: 100%;
 }
 
+.flashcard__details {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.flashcard__details summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  margin-bottom: 0.5rem;
+  list-style: none;
+}
+
+.flashcard__details summary::-webkit-details-marker {
+  display: none;
+}
+
+.flashcard__details summary::before {
+  content: "▸ ";
+}
+
+.flashcard__details[open] summary::before {
+  content: "▾ ";
+}
+
+.flashcard__definition-vi {
+  margin: 0 0 0.65rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 100%;
+}
+
 .flashcard__definition-en {
-  margin: 0 0 1rem;
-  font-size: 0.95rem;
-  line-height: 1.55;
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
   color: var(--ink-muted);
   max-width: 100%;
 }

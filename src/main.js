@@ -108,7 +108,8 @@ function applyFilters() {
       !query ||
       w.word.includes(query) ||
       w.definition.toLowerCase().includes(query) ||
-      (w.definition_vi || "").toLowerCase().includes(query);
+      (w.definition_vi || "").toLowerCase().includes(query) ||
+      (w.meaning_vi || "").toLowerCase().includes(query);
     const matchCefr = !cefr || w.cefr === cefr;
     return matchQuery && matchCefr;
   });
@@ -143,9 +144,8 @@ function renderGrid() {
       </div>
       <h3 class="card__word">${entry.word}</h3>
       <p class="card__ipa">${getIpa(entry)}</p>
+      <p class="card__meaning-vi">${entry.meaning_vi || "—"}</p>
       <p class="card__pos">${entry.pos}</p>
-      <p class="card__def-vi">${entry.definition_vi || ""}</p>
-      <p class="card__def">${entry.definition}</p>
     </article>
   `
     )
@@ -195,6 +195,7 @@ function renderStudyCard() {
   $("#card-word").textContent = entry.word;
   $("#card-ipa").textContent = getIpa(entry);
   $("#card-pos").textContent = entry.pos;
+  $("#card-meaning-vi").textContent = entry.meaning_vi || "—";
   $("#card-definition-vi").textContent = entry.definition_vi || "";
   $("#card-definition").textContent = entry.definition;
   $("#card-example").textContent = entry.example ? `"${entry.example}"` : "";

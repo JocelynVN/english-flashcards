@@ -6,6 +6,7 @@
   "scripts": {
     "build:data": "python3 scripts/build_words.py",
     "translate:vi": "python3 scripts/translate_vi.py",
+    "translate:quick": "python3 scripts/translate_quick.py",
     "dev": "vite",
     "build": "npm run build:data && vite build",
     "preview": "vite preview"
