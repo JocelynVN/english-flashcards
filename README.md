@@ -17,6 +17,7 @@ Web app học **3.000 từ tiếng Anh phổ thông** (Oxford 3000) với **phi�
 cd english-flashcards
 npm install
 npm run build:data   # tải & tạo public/data/words.json
+npm run translate:vi # dịch nghĩa sang tiếng Việt (chạy một lần / khi cập nhật từ mới)
 npm run dev          # http://localhost:5173
 ```
 

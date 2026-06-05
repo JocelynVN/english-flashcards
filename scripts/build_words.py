@@ -39,6 +39,7 @@ def normalize(raw: dict) -> list[dict]:
                 "ipa_us": item.get("phon_n_am") or "",
                 "ipa_uk": item.get("phon_br") or "",
                 "definition": item.get("definition") or "",
+                "definition_vi": "",
                 "example": item.get("example") or "",
             }
         )
@@ -49,9 +50,19 @@ def normalize(raw: dict) -> list[dict]:
     return entries
 
 
+def apply_vi_cache(entries: list[dict]) -> list[dict]:
+    cache_path = Path(__file__).resolve().parent / "vi_cache.json"
+    if not cache_path.exists():
+        return entries
+    cache = json.loads(cache_path.read_text(encoding="utf-8"))
+    for entry in entries:
+        entry["definition_vi"] = cache.get(str(entry["id"]), "")
+    return entries
+
+
 def main() -> None:
     raw = fetch_source()
-    words = normalize(raw)
+    words = apply_vi_cache(normalize(raw))
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(words, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Đã ghi {len(words)} từ vào {OUTPUT}")
