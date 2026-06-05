@@ -381,6 +381,9 @@ body {
 .flashcard__back {
   transform: rotateY(180deg);
   background: linear-gradient(160deg, var(--surface) 30%, var(--accent-soft) 100%);
+  justify-content: flex-start;
+  padding-top: 1.75rem;
+  overflow-y: auto;
 }
 
 .flashcard__word {
@@ -421,56 +424,46 @@ body {
   max-width: 100%;
 }
 
-.flashcard__details {
+.flashcard__detail {
   width: 100%;
-  max-width: 100%;
-  margin-bottom: 0.75rem;
-  text-align: left;
+  margin-bottom: 0.85rem;
+  text-align: center;
 }
 
-.flashcard__details summary {
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 500;
+.flashcard__detail-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--ink-muted);
-  margin-bottom: 0.5rem;
-  list-style: none;
-}
-
-.flashcard__details summary::-webkit-details-marker {
-  display: none;
-}
-
-.flashcard__details summary::before {
-  content: "▸ ";
-}
-
-.flashcard__details[open] summary::before {
-  content: "▾ ";
 }
 
 .flashcard__definition-vi {
-  margin: 0 0 0.65rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  margin: 0 0 0.55rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
   color: var(--ink);
   max-width: 100%;
+  text-align: center;
 }
 
 .flashcard__definition-en {
   margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.45;
+  font-size: 0.84rem;
+  line-height: 1.5;
   color: var(--ink-muted);
   max-width: 100%;
+  text-align: center;
 }
 
 .flashcard__example {
-  margin: 0;
-  font-size: 0.9rem;
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
   font-style: italic;
   color: var(--ink-muted);
   line-height: 1.5;
+  text-align: center;
 }
 
 .btn-play {

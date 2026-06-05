@@ -264,7 +264,7 @@ function bindEvents() {
     btn.addEventListener("click", () => setView(btn.dataset.view));
   });
 
-  $("#flashcard").addEventListener("click", flipCard);
+  $("#flashcard .flashcard__front").addEventListener("click", flipCard);
   $("#flashcard").addEventListener("keydown", (e) => {
     if (e.key === " " || e.key === "Enter") {
       e.preventDefault();
