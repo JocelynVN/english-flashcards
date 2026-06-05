@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Học 3000 từ tiếng Anh phổ thông với phiên âm IPA và phát âm"
+    />
+    <title>English Flashcards — 3000 từ phổ thông</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="header__brand">
+          <span class="header__logo" aria-hidden="true">📚</span>
+          <div>
+            <h1>English Flashcards</h1>
+            <p class="header__subtitle">3.000 từ phổ thông · Oxford 3000</p>
+          </div>
+        </div>
+        <div class="header__stats" id="stats"></div>
+      </header>
+
+      <section class="toolbar">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M10.5 3a7.5 7.5 0 105.25 12.79l4.35 4.35a1 1 0 001.42-1.42l-4.35-4.35A7.5 7.5 0 0010.5 3zm0 2a5.5 5.5 0 110 11 5.5 5.5 0 010-11z"
+            />
+          </svg>
+          <input
+            id="search"
+            type="search"
+            placeholder="Tìm từ (vd: abandon, ability...)"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="toolbar__filters">
+          <select id="cefr-filter" aria-label="Lọc theo trình độ CEFR">
+            <option value="">Tất cả cấp độ</option>
+            <option value="A1">A1 — Sơ cấp</option>
+            <option value="A2">A2</option>
+            <option value="B1">B1 — Trung cấp</option>
+            <option value="B2">B2</option>
+            <option value="C1">C1 — Cao cấp</option>
+            <option value="C2">C2</option>
+          </select>
+
+          <div class="accent-toggle" role="group" aria-label="Chọn giọng phiên âm">
+            <button type="button" class="accent-btn active" data-accent="us">🇺🇸 US</button>
+            <button type="button" class="accent-btn" data-accent="uk">🇬🇧 UK</button>
+          </div>
+
+          <div class="view-toggle" role="group" aria-label="Chế độ xem">
+            <button type="button" class="view-btn active" data-view="grid" title="Lưới thẻ">
+              ▦
+            </button>
+            <button type="button" class="view-btn" data-view="study" title="Học thẻ">
+              🎴
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <main>
+        <div id="grid-view" class="grid-view"></div>
+
+        <div id="study-view" class="study-view hidden">
+          <div class="study-progress">
+            <div class="study-progress__bar">
+              <div class="study-progress__fill" id="study-progress-fill"></div>
+            </div>
+            <span id="study-counter">0 / 0</span>
+          </div>
+
+          <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Lật thẻ">
+            <div class="flashcard__inner">
+              <div class="flashcard__face flashcard__front">
+                <span class="flashcard__cefr" id="card-cefr"></span>
+                <h2 class="flashcard__word" id="card-word"></h2>
+                <p class="flashcard__ipa" id="card-ipa"></p>
+                <button type="button" class="btn-play" id="card-play" aria-label="Phát âm">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7L8 5z" />
+                  </svg>
+                  Nghe phát âm
+                </button>
+                <p class="flashcard__hint">Nhấn thẻ hoặc phím Space để lật</p>
+              </div>
+              <div class="flashcard__face flashcard__back">
+                <span class="flashcard__pos" id="card-pos"></span>
+                <p class="flashcard__definition" id="card-definition"></p>
+                <p class="flashcard__example" id="card-example"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="study-actions">
+            <button type="button" class="btn btn--ghost" id="btn-prev">← Trước</button>
+            <button type="button" class="btn btn--ghost" id="btn-shuffle">🔀 Trộn</button>
+            <button type="button" class="btn btn--primary" id="btn-known">Đã thuộc ✓</button>
+            <button type="button" class="btn btn--ghost" id="btn-next">Sau →</button>
+          </div>
+        </div>
+
+        <p id="empty-state" class="empty-state hidden">Không tìm thấy từ nào phù hợp.</p>
+      </main>
+
+      <footer class="footer">
+        <p>
+          Dữ liệu từ
+          <a href="https://github.com/winterdl/oxford-5000-vocabulary-audio-definition" target="_blank" rel="noopener">Oxford 3000</a>
+          · Phát âm qua Dictionary API &amp; trình duyệt
+        </p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

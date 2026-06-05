@@ -1,0 +1,15 @@
+{
+  "name": "english-flashcards",
+  "version": "1.0.0",
+  "description": "Thẻ học 3000 từ tiếng Anh phổ thông — phát âm & phiên âm IPA",
+  "type": "module",
+  "scripts": {
+    "build:data": "python3 scripts/build_words.py",
+    "dev": "vite",
+    "build": "npm run build:data && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
