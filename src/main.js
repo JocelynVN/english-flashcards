@@ -202,6 +202,7 @@ function renderStudyCard() {
 
   const card = $("#flashcard");
   card.classList.toggle("flipped", isFlipped);
+  updateFlipButton();
 
   const known = getKnownSet();
   $("#btn-known").textContent = known.has(entry.word) ? "Đã thuộc ✓" : "Đánh dấu đã thuộc";
@@ -211,6 +212,12 @@ function renderStudyCard() {
 function flipCard() {
   isFlipped = !isFlipped;
   $("#flashcard").classList.toggle("flipped", isFlipped);
+  updateFlipButton();
+}
+
+function updateFlipButton() {
+  const btn = $("#btn-flip");
+  if (btn) btn.textContent = isFlipped ? "↩ Lật lại" : "↻ Lật thẻ";
 }
 
 function nextCard() {
@@ -264,7 +271,23 @@ function bindEvents() {
     btn.addEventListener("click", () => setView(btn.dataset.view));
   });
 
-  $("#flashcard .flashcard__front").addEventListener("click", flipCard);
+  $("#flashcard .flashcard__front").addEventListener("click", (e) => {
+    if (e.target.closest("#card-play")) return;
+    if (!isFlipped) flipCard();
+  });
+
+  $("#flashcard .flashcard__back").addEventListener("click", (e) => {
+    if (e.target.closest("#btn-flip-back")) return;
+    if (isFlipped) flipCard();
+  });
+
+  $("#btn-flip-back").addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (isFlipped) flipCard();
+  });
+
+  $("#btn-flip").addEventListener("click", flipCard);
+
   $("#flashcard").addEventListener("keydown", (e) => {
     if (e.key === " " || e.key === "Enter") {
       e.preventDefault();

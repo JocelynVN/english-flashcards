@@ -94,7 +94,7 @@
                   </svg>
                   Nghe phát âm
                 </button>
-                <p class="flashcard__hint">Nhấn thẻ hoặc phím Space để lật</p>
+                <p class="flashcard__hint">Chạm thẻ để lật</p>
               </div>
               <div class="flashcard__face flashcard__back">
                 <span class="flashcard__pos" id="card-pos"></span>
@@ -105,13 +105,14 @@
                   <p class="flashcard__definition-en" id="card-definition"></p>
                 </div>
                 <p class="flashcard__example" id="card-example"></p>
-                <p class="flashcard__hint">Nhấn Space để lật lại</p>
+                <button type="button" class="btn-flip-back" id="btn-flip-back">↩ Lật lại</button>
               </div>
             </div>
           </div>
 
           <div class="study-actions">
             <button type="button" class="btn btn--ghost" id="btn-prev">← Trước</button>
+            <button type="button" class="btn btn--ghost" id="btn-flip">↻ Lật thẻ</button>
             <button type="button" class="btn btn--ghost" id="btn-shuffle">🔀 Trộn</button>
             <button type="button" class="btn btn--primary" id="btn-known">Đã thuộc ✓</button>
             <button type="button" class="btn btn--ghost" id="btn-next">Sau →</button>
